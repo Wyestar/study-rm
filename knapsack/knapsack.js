@@ -31,3 +31,28 @@ function knapsackProblem(items, capacity) {
   }
   return [knapsackValues[items.length][capacity], getKnapSackItems(knapsackValues, items)];
 }
+
+// let items = [[1, 2], [4, 5], [3, 1], [2, 2]]
+let items2 = [[1, 2], [4, 3], [5, 6], [6, 7]]
+knapsackProblem(items2, 10)
+
+function getKnapSackItems(knapsackValues, items) {
+  const sequence = [];
+  let i = knapsackValues.length - 1;
+  let c = knapsackValues[0].length - 1;
+  while (i > 0) {
+    if (knapsackValues[i][c] === knapsackValues[i - 1][c]) {
+      i -= 1;
+    } else {
+      sequence.unshift(i - 1);
+      c -= items[i - 1][1];
+      i -= 1;
+              console.log(sequence ,'sequence')
+
+    }
+    if (c === 0) break;
+        // console.log(sequence)
+
+  }
+  return sequence;
+}
