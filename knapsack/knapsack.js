@@ -8,12 +8,26 @@
 var stuff = [[1, 2], [4, 3], [5, 6], [6, 7]];
 var bag = 10;
 
-function knapsack(items, limit) {
-  // loop through each item and find all ways to sum to bag weight, needs a double loop
-  // can store each combination in an object
-  // with each combination, find value of grouped items
-  // compare all values, return indexes with the appropriate items
-  
-  
-  
+function knapsackProblem(items, capacity) {
+  const knapsackValues = [];
+  for (let i = 0; i < items.length + 1; i++) {
+    const row = (new Array(capacity + 1)).fill(0);
+    knapsackValues.push(row);
+  }
+  // console.log(knapsackValues ,'matrix constructed')
+  for (let i = 1; i < items.length + 1; i++) {
+    const currentWeight = items[i - 1][1];
+    const currentValue = items[i - 1][0];
+    for (let c = 0; c < capacity + 1; c++) {
+      if (currentWeight > c) {
+        knapsackValues[i][c] = knapsackValues[i - 1][c];
+      } else {
+        // console.log(knapsackValues[i - 1][c - currentWeight] + currentValue)
+
+        knapsackValues[i][c] = Math.max(knapsackValues[i - 1][c], knapsackValues[i - 1][c - currentWeight] + currentValue);
+      }
+    }
+      console.log(knapsackValues ,'matrix filled')
+  }
+  return [knapsackValues[items.length][capacity], getKnapSackItems(knapsackValues, items)];
 }
