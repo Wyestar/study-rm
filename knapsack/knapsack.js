@@ -5,9 +5,6 @@
 // Sample input: [[1, 2], [4, 3], [5, 6], [6, 7]], 10
 // Sample output: [10, [1, 3]]
 
-var stuff = [[1, 2], [4, 3], [5, 6], [6, 7]];
-var bag = 10;
-
 function knapsackProblem(items, capacity) {
   const knapsackValues = [];
   for (let i = 0; i < items.length + 1; i++) {
@@ -32,10 +29,6 @@ function knapsackProblem(items, capacity) {
   return [knapsackValues[items.length][capacity], getKnapSackItems(knapsackValues, items)];
 }
 
-// let items = [[1, 2], [4, 5], [3, 1], [2, 2]]
-let items2 = [[1, 2], [4, 3], [5, 6], [6, 7]]
-knapsackProblem(items2, 10)
-
 function getKnapSackItems(knapsackValues, items) {
   const sequence = [];
   let i = knapsackValues.length - 1;
@@ -47,12 +40,16 @@ function getKnapSackItems(knapsackValues, items) {
       sequence.unshift(i - 1);
       c -= items[i - 1][1];
       i -= 1;
-              console.log(sequence ,'sequence')
 
     }
     if (c === 0) break;
-        // console.log(sequence)
 
   }
   return sequence;
 }
+
+let items = [[1, 2], [4, 5], [3, 1], [2, 2]]
+var items2 = [[1, 2], [4, 3], [5, 6], [6, 7]];
+var bag2 = 10;
+// return 10, [1, 3]
+knapsackProblem()
