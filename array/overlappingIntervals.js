@@ -12,15 +12,18 @@ function overlappingIntervals(arr) {
   let max = arr[0][1];
   let currentMaxInterval = Math.abs(arr[0][0] - arr[0][1]);
   let currentMaxIdx = [];
-  let tempInterval = 0;
   
-  let storedRange = [];
+  let prevRangeIdx = [min, max];
+  
+  // let tempInterval = 0;
+  // let storedRange = [];
+  
   let intervalStorage = [];
   
   let result = [];
   
   for (let i = 1; i < arr.length; i++) {
-    tempInterval = Math.abs(arr[i][0] - arr[i][1]);
+    // tempInterval = Math.abs(arr[i][0] - arr[i][1]);
     
     // possibilities:
     // if there is overlap;
@@ -35,26 +38,36 @@ function overlappingIntervals(arr) {
       max = arr[i][1];
       currentMaxInterval = Math.abs(min - max);
       currentMaxIdx.push([min, max]);
-      console.log(currentMaxIdx ,'currentMaxIdx');
+      // console.log(currentMaxIdx ,'currentMaxIdx');
+      // console.log(currentMaxInterval ,'currentMaxInterval');
     }
     else {
       // there is no overlap
-      intervalStorage.push(currentMaxIdx[currentMaxIdx.length-1]);
-      console.log(intervalStorage ,'intervalStorage');
-      currentMaxIdx = [];
+      // store old interval 
+      // reassign min and max to current loop indices 
+      // if currentMaxIdx has length of zero, store tempIdx instead
       
-      // if (tempInterval < currentMaxInterval) {
-      //   // console.log(currentMaxInterval)
-      //   intervalStorage.push(currentMaxIdx);
-      // }
+      console.log(currentMaxIdx ,'currentMaxIdx');
+      console.log(prevRangeIdx ,'prevRangeIdx');
+      
+      if (currentMaxIdx.length === 0) {
+        intervalStorage.push(prevRangeIdx);
+      }
+      else {
+        intervalStorage.push(currentMaxIdx[currentMaxIdx.length-1]);
+        currentMaxIdx = [];
+      }
+      
+      
       min = arr[i][0];
       max = arr[i][1];
-      console.log(min ,'min');
-      console.log(max ,'max');
+      prevRangeIdx = [min, max];
+      // console.log(min ,'min');
+      // console.log(max ,'max');
     }
   }
-  // console.log(min ,'min');
-  // console.log(max ,'max');
+  console.log(min ,'min');
+  console.log(max ,'max');
   console.log(intervalStorage ,'intervalStorage at end');
 
  return []; 
