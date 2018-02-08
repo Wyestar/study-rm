@@ -15,15 +15,11 @@ function overlappingIntervals(arr) {
   
   let prevRangeIdx = [min, max];
   
-  // let tempInterval = 0;
-  // let storedRange = [];
-  
   let intervalStorage = [];
   
   let result = [];
   
   for (let i = 1; i < arr.length; i++) {
-    // tempInterval = Math.abs(arr[i][0] - arr[i][1]);
     
     // possibilities:
     // if there is overlap;
@@ -38,14 +34,12 @@ function overlappingIntervals(arr) {
       max = arr[i][1];
       currentMaxInterval = Math.abs(min - max);
       currentMaxIdx.push([min, max]);
-      // console.log(currentMaxIdx ,'currentMaxIdx');
-      // console.log(currentMaxInterval ,'currentMaxInterval');
     }
     else {
       // there is no overlap
       // store old interval 
       // reassign min and max to current loop indices 
-      // if currentMaxIdx has length of zero, store tempIdx instead
+      // if currentMaxIdx has length of zero, store prevRangeIdx
       
       console.log(currentMaxIdx ,'currentMaxIdx');
       console.log(prevRangeIdx ,'prevRangeIdx');
@@ -62,8 +56,6 @@ function overlappingIntervals(arr) {
       min = arr[i][0];
       max = arr[i][1];
       prevRangeIdx = [min, max];
-      // console.log(min ,'min');
-      // console.log(max ,'max');
     }
   }
   console.log(min ,'min');
