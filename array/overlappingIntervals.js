@@ -24,9 +24,9 @@ function overlappingIntervals(arr) {
     // possibilities:
     // if there is overlap;
       // intervals can be combined, does not matter if one is greater than the other
-      // if overlaps is totally enclosed, keep original interval
-    // if they cannot be combined, any further intervals cannot overlap with original, store original interval 
-    // new max 
+      // if overlaps is totally enclosed, keep original interval, conditions can bypass this
+    // if they cannot be combined, any further intervals cannot overlap with original, store original and current interval 
+    // reassign min and max and continue loop
     
     if (arr[i][0] < max && arr[i][1] > max) {
       // there is an overlap, and the interval can be extended
@@ -47,11 +47,11 @@ function overlappingIntervals(arr) {
       if (currentMaxIdx.length === 0) {
         intervalStorage.push(prevRangeIdx);
       }
-      else {
+      else if (currentMaxIdx.length > 0) {
         intervalStorage.push(currentMaxIdx[currentMaxIdx.length-1]);
         currentMaxIdx = [];
       }
-      
+	  else {}
       
       min = arr[i][0];
       max = arr[i][1];
