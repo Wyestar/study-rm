@@ -43,3 +43,47 @@ function scoring(n, one, two, four) {
 }
 
 // scoring(3);
+
+/////////////////////////////////////
+//Scoring options are 1, 2, 4
+// options are 2, 5
+let scoring_options_dp = function(n) {
+  if (n <= 0) {
+    return 0;
+  }
+
+  //Max score is 4. Hence we need to save
+  //last 4 ways to calculate the number of ways
+  //for a given n
+  //save the base case on last index of the vector
+  
+  // let result = [0, 0, 0, 1];
+  
+  // 2 and 5
+  let result = [0,0,0,0,1]
+  
+  for (let i = 1; i < n + 1; i++) {
+    let current_sum = result[3] + result[0];
+    
+    result[0] = result[1];
+    result[1] = result[2];
+    result[2] = result[3];
+    result[3] = result[4];
+    result[4] = current_sum;
+  }
+
+  // for (var i = 1; i < n + 1; i++) {
+  //   let current_sum = result[3] + result[2] + result[0];
+  //   //slide left all the results in each iteration
+  //   //result for current i will be saved at last index
+  //   result[0] = result[1];
+  //   result[1] = result[2];
+  //   result[2] = result[3];
+  //   result[3] = current_sum;
+  // }
+  
+  console.log(result);
+  return result[4];
+};
+
+scoring_options_dp(7);
