@@ -57,3 +57,49 @@ const array = [ [1, 15], [16, 19], [17, 20] ];
 const array2 = [ [2, 4], [4, 5] ];
 // [10, 15]
 overlappingIntervals(array);
+
+// below is wip recursive unsorted interval solution  
+function unsorted(arr) {
+  if (arr[i][0] > min && arr[i][0] < max && arr[i][1] > max) {
+    // next min is within range of current interval
+    if (arr[i][1] > max) {
+      // next max can extend interval 
+      max = arr[i][1];
+      currentMaxInterval = Math.abs(min - max);
+      result[0] = min;
+      result[1] = max;
+    }
+  }
+  else if (arr[i][1] < max && arr[i][1] > min) {
+    if (arr[i][0] < min) {
+      min = arr[i][0];
+      currentMaxInterval = Math.abs(min - max);
+      result[0] = min;
+      result[1] = max;
+    }
+    
+  }
+  else {
+    storage.push(arr[i]);
+  }
+
+  // if ( (Math.abs(arr[i][0] - arr[i][1])) > currentMaxInterval ) {
+  //   min = arr[i][0];
+  //   max = arr[i][1];
+  //   currentMaxInterval = Math.abs(arr[i][0] - arr[i][1]);
+  // }
+  
+  storage.push(result);
+  console.log(storage ,'storage');
+  if (storage.length !== 0) {
+    storage.push(result);
+    // return overlappingIntervals(storage);
+    // console.log(storage)
+  }
+  
+  else {
+    // storage length is 0
+    // console.log(result ,'result');
+    return result;
+  }
+}
