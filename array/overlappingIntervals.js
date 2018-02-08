@@ -11,10 +11,12 @@ function overlappingIntervals(arr) {
   let min = arr[0][0];
   let max = arr[0][1];
   let currentMaxInterval = Math.abs(arr[0][0] - arr[0][1]);
-  let currentRange = []
+  let currentMaxIdx = [min, max];
   let tempInterval = 0;
   
+  let storedRange = [];
   let intervalStorage = [];
+  
   let result = [];
   
   for (let i = 1; i < arr.length; i++) {
@@ -26,18 +28,18 @@ function overlappingIntervals(arr) {
       // if overlaps is totally enclosed, keep original interval
     // if they cannot be combined, any further intervals cannot overlap with original, store original interval 
     // new max 
+    
     if (arr[i][0] < max && arr[i][1] > max) {
-      console.log('test')
+      // there is an overlap, and the interval can be extended
       // since intervals are sorted by start, arr[i][0] > min is always true
       max = arr[i][1];
-      currentRange[0] = min;
-      currentRange[1] = max;
       currentMaxInterval = Math.abs(min - max);
     }
     else {
       // there is no overlap 
       if (tempInterval < currentMaxInterval) {
-        intervalStorage.push([currentRange, currentMaxInterval]);
+        // console.log(currentMaxInterval)
+        intervalStorage.push(currentMaxIdx);
       }
       min = arr[i][0];
       max = arr[i][1];
@@ -46,18 +48,16 @@ function overlappingIntervals(arr) {
   console.log(min ,'min');
   console.log(max ,'max');
   console.log(intervalStorage ,'intervalStorage');
-  if (Math.abs(min - max) < intervalStorage[0][1]) {
-    return intervalStorage[0][0];
-  }
 
- return [min, max]; 
+ return []; 
 }
 
-const array = [ [1, 15], [16, 19], [17, 20] ];
+const array = [ [1, 3], [2, 4], [3, 10], [16, 19], [17, 20] ];
 const array2 = [ [2, 4], [4, 5] ];
 // [10, 15]
 overlappingIntervals(array);
 
+////////////////////////////////////////////
 // below is wip recursive unsorted interval solution  
 function unsorted(arr) {
   if (arr[i][0] > min && arr[i][0] < max && arr[i][1] > max) {
