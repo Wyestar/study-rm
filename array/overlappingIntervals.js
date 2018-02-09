@@ -61,6 +61,11 @@ function overlappingIntervals(arr) {
   console.log(min ,'min');
   console.log(max ,'max');
   console.log(intervalStorage ,'intervalStorage at end');
+  
+  // find greatest interval in intervalStorage, assign to variable
+  let intervalStorageMax;
+  
+  if (Math.abs(min - max) > intervalStorageMax) {}
 
  return []; 
 }
