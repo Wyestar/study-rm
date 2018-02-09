@@ -32,8 +32,11 @@ function overlappingIntervals(arr) {
       // there is an overlap, and the interval can be extended
       // since intervals are sorted by start, arr[i][0] > min is always true
       max = arr[i][1];
-      currentMaxInterval = Math.abs(min - max);
-      currentMaxIdx.push([min, max]);
+	  
+      // don't need this
+	  currentMaxInterval = Math.abs(min - max);
+      
+	  currentMaxIdx.push([min, max]);
     }
     else {
       // there is no overlap
