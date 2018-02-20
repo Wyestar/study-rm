@@ -7,7 +7,7 @@ function nico(key, message) {
   }
 
   function sorter(str) {
-    return key.split('').sort().join('');
+    return str.split('').sort().join('');
   }
 
   let sortedKey = sorter(key);
@@ -28,7 +28,7 @@ function nico(key, message) {
     return a[1] - b[1];
   });
   console.log(sortedArray ,'sortedArray');
-  console.log(result);
+  console.log(result, 'result');
   
   return result;
 }
