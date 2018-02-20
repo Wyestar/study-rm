@@ -5,3 +5,16 @@ For example, if S = aeeiooua, then aeiou and aeeioou are magical sub-sequences b
 other test cases:
 S = "aeiouaaeeaiioooooieuau" => aaeeiiooooouu is longest subsequence. return 13
 */
+
+// for each vowel, find largest consecutive block
+// if they are in order, add lengths
+
+//
+
+function magic(str) {
+	
+	return null;
+}
+
+let string = "aeiouaaeeaiioooooieuau";
+magic(string)
