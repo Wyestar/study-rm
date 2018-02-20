@@ -4,7 +4,7 @@ A magical sub-sequence of a string S is a sub-sequence of S that contains all fi
 For example, if S = aeeiooua, then aeiou and aeeioou are magical sub-sequences but aeio and aeeioua are not.
 
 other test cases:
-S = "aeiouaaeeaiioooooieuau" => aaeeiiooooouu is longest subsequence. return 13
+S = "aeiouaaeeaiioooooieuau" => aaeeiiooooou is longest subsequence. return 13
 */
 
 // for each vowel, find largest consecutive block
@@ -12,21 +12,27 @@ S = "aeiouaaeeaiioooooieuau" => aaeeiiooooouu is longest subsequence. return 13
 // find all possible magic subsequences, and store them
 // return the length of the longest one 
 
-// below is not true
-// after an 'a', next char must be another 'a' or 'e'
-// after 'e', next must be 'e' or 'i', and so forth
+// after 'a', if every block of each vowel is stored, the order of the blocks is important.
+// magicss can also start from a later 'a' block
+// from each valid partial magicss, build all possible complete magicss
+// find length of longest complete 
+// store all permutations in an object?
 
-// find leftmost 'a' and rightmost 'u', doesn't really help?
+// longest increasing subsequence
+// there are potentially many LIS in string, only concerned about the longest
 
 // assuming input is only lowercase vowels
 
-function magic(str) {
+function magic(str, key = "a") {
 	vowels = ["a", "e", "i", "o", "u"];
 	
+	temp = "";
 	for (i = 0; i < str.length; i++) {
-	  if (str[i] === vowels[0]) {
-	    // found 'a', subsequence can be to the right of the 'a'
-	    
+	  if (str[i] === key) {
+	    // find all consecutive 'a's if there are any
+	    // otherwise, start searching and counting 'e'
+	    temp = str.slice(i + 1);
+	    // callback with temp and next key (vowel)
 	  }
 	}
 	
