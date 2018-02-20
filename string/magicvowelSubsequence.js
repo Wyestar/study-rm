@@ -23,16 +23,24 @@ S = "aeiouaaeeaiioooooieuau" => aaeeiiooooou is longest subsequence. return 13
 
 // assuming input is only lowercase vowels
 
-function magic(str, key = "a") {
+function magic(str, key = 0) {
+	console.log(key ,'key');
+	console.log(str);
+	
 	vowels = ["a", "e", "i", "o", "u"];
 	
 	temp = "";
 	for (i = 0; i < str.length; i++) {
-	  if (str[i] === key) {
+	  if (vowels.indexOf(str[i]) === key) {
 	    // find all consecutive 'a's if there are any
 	    // otherwise, start searching and counting 'e'
 	    temp = str.slice(i + 1);
+	    if (key === 5) {
+	      key = -1;
+	    }
+	    key = key + 1;
 	    // callback with temp and next key (vowel)
+	    magic(temp, key);
 	  }
 	}
 	
