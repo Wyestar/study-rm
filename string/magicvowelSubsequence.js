@@ -34,12 +34,21 @@ function magic(str, key = 0) {
 
 	idxStorage = [];
 	temp = "";
-	for (i = 0; i < str.length; i++) {
+	for (let i = 0; i < str.length; i++) {
 	  if (str[i] === "a") {
+
 			idxStorage.push(i);
 	  }
 	}
 	console.log(idxStorage, 'idxStorage end of loop');
+
+	for (let j = 0; j < idxStorage.length; j++) {
+		for (let k = 1; k < idxStorage.length; k++) {
+			if (idxStorage[k] === (idxStorage[j] + 1)) {
+				
+			}
+		}
+	}
 
 	return null;
 }
