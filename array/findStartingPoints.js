@@ -20,13 +20,13 @@ function startingPoints(arr) {
       }
       else {
         // consecutive block is broken
+        // store index
         // reset pointer
         // reset i
         storage.push(arr[i]);
         i = j;
       }
     }
-    // console.log(pointer);
   }
   console.log(storage ,'storage at end');
 
