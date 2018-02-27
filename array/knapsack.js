@@ -11,7 +11,6 @@ function knapsackProblem(items, capacity) {
     const row = (new Array(capacity + 1)).fill(0);
     knapsackValues.push(row);
   }
-  // console.log(knapsackValues ,'matrix constructed')
   for (let i = 1; i < items.length + 1; i++) {
     const currentWeight = items[i - 1][1];
     const currentValue = items[i - 1][0];
@@ -19,12 +18,9 @@ function knapsackProblem(items, capacity) {
       if (currentWeight > c) {
         knapsackValues[i][c] = knapsackValues[i - 1][c];
       } else {
-        // console.log(knapsackValues[i - 1][c - currentWeight] + currentValue)
-
         knapsackValues[i][c] = Math.max(knapsackValues[i - 1][c], knapsackValues[i - 1][c - currentWeight] + currentValue);
       }
     }
-      console.log(knapsackValues ,'matrix filled')
   }
   return [knapsackValues[items.length][capacity], getKnapSackItems(knapsackValues, items)];
 }
@@ -40,10 +36,8 @@ function getKnapSackItems(knapsackValues, items) {
       sequence.unshift(i - 1);
       c -= items[i - 1][1];
       i -= 1;
-
     }
     if (c === 0) break;
-
   }
   return sequence;
 }
