@@ -7,3 +7,11 @@ function hexer(color) {
 function rgbToHex(r, g, b) {
     return "#" + hexer(r) + hexer(g) + hexer(b);
 }
+
+// rgb to binary
+// can shift red >> 16
+// shift green >> 8
+// dont shift blue, simple xor?
+
+
+// html colors
