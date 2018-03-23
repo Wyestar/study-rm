@@ -7,9 +7,9 @@
 // D          500
 // M          1,000
 
-// roman numerals do not repeat more than three in a row
+// roman numerals do not repeat more than three in a row, but they can in some instances
 
-function solution(number) {
+function romanNumeralConverter(number) {
   var romanMatrix = [
   [1000, 'M'],
   [900, 'CM'],
@@ -32,7 +32,7 @@ function solution(number) {
   else {
     for (var i = 0; i < romanMatrix.length; i++) {
       if (number >= romanMatrix[i][0]) {
-        return romanMatrix[i][1] + solution(number - romanMatrix[i][0]);
+        return romanMatrix[i][1] + romanNumeralConverter(number - romanMatrix[i][0]);
       }
     }
   }
