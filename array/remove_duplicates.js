@@ -12,7 +12,6 @@ dups = [1,1,1,2,2,2,2,3,3,4,4,4,4,4] => [1,2,3,4] => return 4
 */
 
 function removeDups(arr) {
-
   let counter = 1;
   let temp = arr[0]
   for (let i = 1; i < arr.length; i++) {
@@ -24,6 +23,17 @@ function removeDups(arr) {
   return counter;
 }
 
+// not complete 
+function removeDupsSplice(arr) {
+  let j = arr.length - 1;
+  for (let i = arr.length - 2; i >= 0; i--) {
+    if (arr[i] === arr[j]) {
+      j = i - 1;
+      arr = arr.splice(i, 1);
+    }
+  }
+  return arr.length;
+}
 
 
 // Test cases:
